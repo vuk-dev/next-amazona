@@ -12,6 +12,7 @@ import {
 import NextLink from 'next/link'
 import Product from '../models/Product'
 import dbConnect from '../utils/db'
+import data from '../utils/data'
 
 export default function Home({ products }) {
 	return (
@@ -19,7 +20,7 @@ export default function Home({ products }) {
 			<div>
 				<h1>Products</h1>
 				<Grid container spacing={3}>
-					{products.map((product) => (
+					{data.products.map((product) => (
 						<Grid item md={4} key={product.name}>
 							<Card>
 								<NextLink
@@ -54,17 +55,17 @@ export default function Home({ products }) {
 	)
 }
 
-export async function getServerSideProps() {
-	await dbConnect()
-	const products = await Product.find({}).lean()
-	return {
-		props: {
-			products: products.map((elem) => ({
-				...elem,
-				_id: elem._id.toString(),
-				createdAt: elem.createdAt.toString(),
-				updatedAt: elem.createdAt.toString(),
-			})),
-		},
-	}
-}
+// export async function getServerSideProps() {
+// 	await dbConnect()
+// 	const products = await Product.find({}).lean()
+// 	return {
+// 		props: {
+// 			products: products.map((elem) => ({
+// 				...elem,
+// 				_id: elem._id.toString(),
+// 				createdAt: elem.createdAt.toString(),
+// 				updatedAt: elem.createdAt.toString(),
+// 			})),
+// 		},
+// 	}
+// }
