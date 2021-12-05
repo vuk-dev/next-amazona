@@ -46,11 +46,10 @@ export default function Layout({ title, description, children }) {
 	const classes = useStyles()
 
 	const darkModeChangeHandler = () => {
-		return dispatch({ type: darkMode ? 'DARK_MODE_OFF' : 'DARK_MODE_ON' })
 		const newDarkMode = !darkMode
 		Cookies.set('darkMode', newDarkMode ? 'ON' : 'OFF')
+		return dispatch({ type: darkMode ? 'DARK_MODE_OFF' : 'DARK_MODE_ON' })
 	}
-	console.log(darkMode)
 	return (
 		<div>
 			<Head>
