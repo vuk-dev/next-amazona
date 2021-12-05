@@ -1,11 +1,11 @@
 import nc from 'next-connect'
 import Product from '../../../models/Product'
-import connectDB from '../../../utils/db'
+import dbConnect from '../../../utils/db'
 
 const handler = nc()
 
 handler.get(async (req, res) => {
-	await connectDB()
+	await dbConnect()
 	const products = await Product.find({})
 	res.send(products)
 })

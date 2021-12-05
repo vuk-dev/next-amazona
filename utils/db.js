@@ -1,6 +1,8 @@
 import mongoose from 'mongoose'
 
 const MONGODB_URI = process.env.MONGODB_URI
+// const MONGODB_URI =
+// 	'mongodb+srv://vuk:paladinDev2@cluster0.fauhs.mongodb.net/test'
 
 if (!MONGODB_URI) {
 	throw new Error(
@@ -19,7 +21,7 @@ async function dbConnect() {
 		return cached.conn
 	}
 
-	if (!cached.promise) {
+	if (!cached.promise && mongoose) {
 		const opts = {
 			bufferCommands: false,
 		}
