@@ -11,7 +11,9 @@ import {
 } from '@material-ui/core'
 import data from '../utils/data'
 import NextLink from 'next/link'
+import connectDB from '../utils/db'
 
+connectDB()
 export default function Home() {
 	return (
 		<Layout>
