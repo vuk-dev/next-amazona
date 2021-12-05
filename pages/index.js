@@ -12,7 +12,6 @@ import {
 import NextLink from 'next/link'
 import Product from '../models/Product'
 import dbConnect from '../utils/db'
-import data from '../utils/data'
 
 export default function Home({ products }) {
 	return (
@@ -43,7 +42,7 @@ export default function Home({ products }) {
 								<CardActions>
 									<Typography>$ {product.price}</Typography>
 									<Button size='small' color='primary'>
-										Add to chart
+										Add to cart
 									</Button>
 								</CardActions>
 							</Card>
