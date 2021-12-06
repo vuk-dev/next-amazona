@@ -20,11 +20,11 @@ import Layout from '../components/Layout'
 import { Store } from '../utils/Store'
 import NextLink from 'next/link'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 
-export default function Cart() {
+function Cart() {
 	const { state } = useContext(Store)
 	const { cartItems } = state.cart
-	console.log(cartItems)
 	return (
 		<Layout>
 			<Typography component={'h1'} variant={'h1'}>
@@ -154,3 +154,5 @@ export default function Cart() {
 		</Layout>
 	)
 }
+
+export default dynamic(() => Promise.resolve(Cart), { ssr: false })

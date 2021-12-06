@@ -13,11 +13,12 @@ import {
 	Switch,
 	Badge,
 } from '@material-ui/core'
+import dynamic from 'next/dynamic'
 
 import useStyles from '../utils/styles'
 import { Store } from '../utils/Store'
 
-export default function Layout({ title, description, children }) {
+function Layout({ title, description, children }) {
 	const { state, dispatch } = useContext(Store)
 	const { darkMode, cart } = state
 	const theme = createTheme({
@@ -103,3 +104,5 @@ export default function Layout({ title, description, children }) {
 		</div>
 	)
 }
+
+export default dynamic(() => Promise.resolve(Layout), { ssr: false })
